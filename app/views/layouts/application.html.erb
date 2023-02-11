@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= favicon_link_tag 'icon.png'%>
     <title>Moviapp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -9,8 +10,83 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+ <body class="d-flex flex-column vh-100">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color:black;">
+        <div class="container">
+          <a class="navbar-brand" href="/"><span><%= image_tag 'logo.png', size: "200x50" %></span></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if master_signed_in? %>
+              <!--adminログイン状態の際に、表示したいheaderのメニューを記載-->
+               <li class="nav-item mr-2">
+                <%= link_to '投稿一覧', admin_movies_path, class: "btn btn-outline-light btn-sm btn-block " %>
+               </li>
+               <li class="nav-item mr-2">
+                <%= link_to '会員一覧', admin_users_path, class: "btn btn-outline-light btn-sm btn-block " %>
+               </li>
+               <li class="nav-item mr-2">
+                <%= link_to 'ジャンル一覧', admin_genres_path, class: "btn btn-outline-light btn-sm btn-block " %>
+               </li>
+               <li class="nav-item mr-2">
+                <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-outline-light btn-sm btn-block " %>
+               </li>
+              <% elsif user_signed_in? %>
+              <!--customerログイン状態の際に、表示したいheaderのメニューを記載-->
+              <li class="name mt-1 mr-5">ようこそ<span><%= current_user.name %></span>さん！</li>
+               <li class="nav-item mr-2">
+                <%= link_to 'マイページ', user_path(current_user), class: "btn btn-outline-light btn-sm btn-block " %>
+               </li>
+               <li class="nav-item mr-2">
+                <%= link_to '投稿一覧', movies_path, class: "btn btn-outline-light btn-sm btn-block " %>
+               </li>
+               <li class="nav-item mr-2">
+                <%= link_to '会員一覧', users_path, class: "btn btn-outline-light btn-sm btn-block " %>
+               </li>
+               <li class="nav-item mr-2">
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-outline-light btn-sm btn-block " %>
+               </li>
+              <% else %>
+              <!--adminでもcustomerでもログインしていない時に表示するheaderのメニューを記載-->
+               <li class="nav-item mr-2">
+                <%= link_to 'About', about_path, class: "btn btn-outline-light btn-sm btn-block " %>
+               </li>
+               <li class="nav-item mr-2">
+                <%= link_to '投稿一覧', movies_path, class: "btn btn-outline-light btn-sm btn-block " %>
+               </li>
+               <li class="nav-item mr-2">
+                <%= link_to '新規登録', new_user_registration_path, class: "btn btn-outline-light btn-sm btn-block " %>
+               </li>
+               <li class="nav-item mr-2">
+                <%= link_to 'ログイン', new_user_session_path, class: "btn btn-outline-light btn-sm btn-block " %>
+               </li>
+              <% end %>
+            </ul>
+             <form class="d-flex">
+              <input class="form-control" id="search"　type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+      </form>
+          </div>
 
-  <body>
-    <%= yield %>
+        </div>
+
+      </nav>
+
+
+    </header>
+
+    <main>
+     <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </main>
+    <footer>
+   <footer class="fixed-bottom pt-3 pb-4" style="background-color:black;">
+      <div class="container">
+        <div class="row">
+        </div>
+      </div>
+    </footer>
   </body>
-</html>
+  </html>

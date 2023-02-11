@@ -57,3 +57,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'themoviedb-api', '~> 1.3'
 gem 'jquery-rails'
+gem 'image_processing', '~> 1.2'
