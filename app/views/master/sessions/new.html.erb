@@ -1,13 +1,13 @@
 <div class ="container">
   <div class="row">
-      <h4 class="title bg-light" >管理者ログイン</h4>
+      <h4>管理者ログイン</h4>
 
-
+   <div class="col-md-6 offset-md-1">
    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class = form-group>
-        <%= f.label "メールアドレス" %>
+        <%= f.label "管理者名" %>
 
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
       </div>
 
       <div class = form-group>
@@ -24,6 +24,6 @@
     </div>
   <% end %>
 
-<%= render "admin/shared/links" %>
+</div>
 </div>
 </div>

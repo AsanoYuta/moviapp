@@ -1,0 +1,7 @@
+<% if @model == 'user' %>
+	<h3>Users search for "<%= @content %>"</h3>
+  <%= render 'master/users/index', users: @records %>
+<% elsif @model == 'movie' %>
+	<h3>Movies search for "<%= @content %>"</h3>
+  <%= render 'master/movies/index', movies: @records %>
+<% end %>

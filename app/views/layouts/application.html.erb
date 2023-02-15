@@ -13,7 +13,7 @@
  <body class="d-flex flex-column vh-100">
     <header>
       <nav class="navbar navbar-expand-lg navbar-light" style="background-color:black;">
-        <div class="container">
+
           <a class="navbar-brand" href="/"><span><%= image_tag 'logo.png', size: "200x50" %></span></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
           </button>
@@ -22,20 +22,24 @@
               <% if master_signed_in? %>
               <!--adminログイン状態の際に、表示したいheaderのメニューを記載-->
                <li class="nav-item mr-2">
-                <%= link_to '投稿一覧', admin_movies_path, class: "btn btn-outline-light btn-sm btn-block " %>
+                <%= link_to '投稿一覧', master_movies_path, class: "btn btn-outline-light btn-sm btn-block " %>
                </li>
                <li class="nav-item mr-2">
-                <%= link_to '会員一覧', admin_users_path, class: "btn btn-outline-light btn-sm btn-block " %>
+                <%= link_to 'ユーザー一覧', master_users_path, class: "btn btn-outline-light btn-sm btn-block " %>
                </li>
                <li class="nav-item mr-2">
-                <%= link_to 'ジャンル一覧', admin_genres_path, class: "btn btn-outline-light btn-sm btn-block " %>
+                <%= link_to 'ジャンル一覧', master_genres_path, class: "btn btn-outline-light btn-sm btn-block " %>
                </li>
                <li class="nav-item mr-2">
-                <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-outline-light btn-sm btn-block " %>
+                <%= link_to 'ログアウト', destroy_master_session_path, method: :delete, class: "btn btn-outline-light btn-sm btn-block " %>
                </li>
+               <%= render "master/searches/form" %>
               <% elsif user_signed_in? %>
               <!--customerログイン状態の際に、表示したいheaderのメニューを記載-->
               <li class="name mt-1 mr-5">ようこそ<span><%= current_user.name %></span>さん！</li>
+               <li class="nav-item mr-2">
+                <%= link_to '新規投稿', new_movie_path, class: "btn btn-outline-light btn-sm btn-block " %>
+               </li>
                <li class="nav-item mr-2">
                 <%= link_to 'マイページ', user_path(current_user), class: "btn btn-outline-light btn-sm btn-block " %>
                </li>
@@ -43,11 +47,12 @@
                 <%= link_to '投稿一覧', movies_path, class: "btn btn-outline-light btn-sm btn-block " %>
                </li>
                <li class="nav-item mr-2">
-                <%= link_to '会員一覧', users_path, class: "btn btn-outline-light btn-sm btn-block " %>
+                <%= link_to 'ユーザー一覧', users_path, class: "btn btn-outline-light btn-sm btn-block " %>
                </li>
                <li class="nav-item mr-2">
                 <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-outline-light btn-sm btn-block " %>
                </li>
+              <%= render "public/searches/form" %>
               <% else %>
               <!--adminでもcustomerでもログインしていない時に表示するheaderのメニューを記載-->
                <li class="nav-item mr-2">
@@ -64,13 +69,9 @@
                </li>
               <% end %>
             </ul>
-             <form class="d-flex">
-              <input class="form-control" id="search"　type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
-      </form>
           </div>
 
-        </div>
+
 
       </nav>
 
@@ -82,7 +83,7 @@
       <%= yield %>
     </main>
     <footer>
-   <footer class="fixed-bottom pt-3 pb-4" style="background-color:black;">
+   <footer class="fixed-bottom pt-2 pb-3" style="background-color:black;">
       <div class="container">
         <div class="row">
         </div>

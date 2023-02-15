@@ -1,2 +1,24 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class ="container">
+<div class="row mb-5">
+ <h2>ユーザー情報</h2>
+</div>
+</div>
+
+<div class ="col-mb-6 offset-mb-3">
+<div class="text-center">
+  <p>プロフィール画像</p>
+  <p><%= image_tag @user.get_profile_image(200,420) %></p>
+  <p>ユーザー名</p>
+  <p class="user-name"><%= @user.name %></p>
+ <%- if @user.id == current_user.id %>
+  <p>メールアドレス</p>
+  <p class = "user-email"><%= @user.email %></p>
+  <br>
+ <%= link_to "編集する", edit_user_path(current_user), class: "btn btn-success" %>
+ <%= link_to "退会する", confirm_path, class: "btn btn-danger"  %>
+ <% else %>
+ <% end %>
+</div>
+
+</div>
+</div>

@@ -1,0 +1,44 @@
+<div class ="container">
+<div class="row mb-5">
+ <h2>感想・評価</h2>
+</div>
+</div>
+
+<div class ="col-8 mb-4">
+
+ <%= link_to master_movie_path(@movie.id) do %>
+  <p><%= image_tag @movie.get_image(200,420) %></p><% end %>
+  <p>　</p>
+  <p class = "movie-body"><%= @movie.body %></p>
+  <p class="movie-title"><%= @movie.title %></p>
+    <div class="star-group">
+      <div class="detail-review">評価</div>
+      <div class="detail-value", id="star-comf-<%= @movie.id %>"></div>
+      <div class="eval-star"><%= @movie.comfort %>/5点</div>
+    </div>
+      <script>
+      $('#star-comf-<%= @movie.id %>').empty();
+      $('#star-comf-<%= @movie.id %>').raty({
+        size: 38,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half: true,
+        readOnly: true,
+        score: <%= @movie.comfort %>,
+      });
+      </script>
+  <br>
+  <%= render "public/movie_comments/form", movie: @movie, movie_comment: @movie_comment %>
+
+  <br>
+ <%= render "public/movie_comments/counter", movie: @movie %>
+ <div class="movie-comments-index">
+   <%= render "public/movie_comments/index", movie: @movie %>
+ </div>
+ <%= link_to "編集する", edit_movie_path(@movie.id), class: "btn btn-success" %>
+
+ <%= link_to "削除する", movie_path(@movie.id), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
+
+
+</div>

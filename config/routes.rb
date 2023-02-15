@@ -17,22 +17,27 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
-
+   get '/search', to: 'searches#search'
    resources :users, only: [:show, :index, :edit, :update]
+   patch "user/withdraw" => 'users#withdraw', as: "withdraw"
+   get '/confirm', to: 'users#confirm'
+   resources :movies, only: [:show, :index, :edit, :update, :new, :create, :destroy]do
+    resource :favorites, only: [:create, :destroy]
+    resources :movie_comments, only: [:create, :destroy]
 
-   resources :movies, only: [:show, :index, :edit, :update, :new, :create]
+   end
 
    get 'about' => 'homes#about', as: "about"
 
   end
 
   namespace :master do
+   get '/search', to: 'searches#search'
+   resources :users, only: [:show, :index, :edit, :update, :destroy]
 
-   resources :users, only: [:show, :index, :edit, :update]
+   resources :movies, only: [:show, :index, :edit, :update, :destroy]
 
-   resources :movies, only: [:show, :index, :edit, :update]
-
-   resources :genres, only: [:show, :index, :edit, :update, :new]
+   resources :genres, only: [:show, :index, :edit, :update, :new, :destroy]
 
 
 

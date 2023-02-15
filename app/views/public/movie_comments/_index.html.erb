@@ -1,0 +1,21 @@
+<table>
+  <tbody>
+      <% movie.movie_comments.each do |movie_comment| %>
+      <tr>
+
+        <td>
+          <%= link_to user_path(movie_comment.user) do %>
+            <%= image_tag movie_comment.user.get_profile_image(100,100) %><br>
+            <%= movie_comment.user.name %>
+          <% end %>
+        </td>
+        <td><%= movie_comment.comment %></td>
+        <td>
+          <% if movie_comment.user == current_user %>
+            <%= link_to "Destroy", movie_movie_comment_path(movie, movie_comment), method: :delete, class: "btn btn-danger pull-right", remote: true %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>

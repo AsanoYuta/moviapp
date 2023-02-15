@@ -1,2 +1,20 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class ="container">
+<div class="row mb-5">
+ <h2>ユーザー情報</h2>
+</div>
+</div>
+
+<div class ="col-mb-6 offset-mb-3">
+<div class="text-center">
+  <p>プロフィール画像</p>
+  <p><%= image_tag @user.get_profile_image(200,420) %></p>
+  <p>ユーザー名</p>
+  <p class="user-name"><%= @user.name %></p>
+  <p>メールアドレス</p>
+  <p class = "user-email"><%= @user.email %></p>
+  <br>
+ <%= link_to "編集する", edit_master_user_path(@user.id), class: "btn btn-success" %>
+ <%= link_to "削除する", user_path(@user.id), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
+</div>
+</div>
+</div>

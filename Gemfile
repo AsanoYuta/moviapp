@@ -58,3 +58,6 @@ gem 'devise'
 gem 'themoviedb-api', '~> 1.3'
 gem 'jquery-rails'
 gem 'image_processing', '~> 1.2'
+gem 'kaminari','~> 1.2.1'
+gem 'haml-rails'
+gem "enum_help"
