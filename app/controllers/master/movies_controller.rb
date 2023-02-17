@@ -2,21 +2,29 @@ class Master::MoviesController < ApplicationController
 before_action :authenticate_master!
 
   def index
-    @movies = Movie.page(params[:page])
+    @genres = Genre.all
+    if params[:genre_id]
+      @movies=Movie.where(genre_id: params[:genre_id]).page(params[:page])
+    else
+      @movies = Movie.page(params[:page])
+    end
   end
 
   def edit
     @movie = Movie.find(params[:id])
     @user = current_master
+    @genres = Genre.all
   end
 
   def new
     @movie = Movie.new
+    @genres = Genre.all
   end
 
   def show
     @movie = Movie.find(params[:id])
     @movie_comment = MovieComment.new
+    @genres = Genre.all
   end
 
   def create

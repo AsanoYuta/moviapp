@@ -1,6 +1,8 @@
 class Movie < ApplicationRecord
   belongs_to :user
 
+  belongs_to :genre
+
   has_many :favorites, dependent: :destroy
 
   has_many :movie_comments, dependent: :destroy
@@ -21,15 +23,7 @@ class Movie < ApplicationRecord
   end
 
   def self.search_for(content, method)
-    if method == 'perfect'
-      Movie.where(title: content)
-    elsif method == 'forward'
-      Movie.where('title LIKE ?', content+'%')
-    elsif method == 'backward'
-      Movie.where('title LIKE ?', '%'+content)
-    else
       Movie.where('title LIKE ?', '%'+content+'%')
-    end
   end
 
 end

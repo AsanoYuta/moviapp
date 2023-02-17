@@ -5,6 +5,7 @@ class CreateMovies < ActiveRecord::Migration[6.1]
       t.text :body, null: false, default: ""
       t.float :comfort, null: false, default: 0
       t.integer :user_id
+      t.integer :genre_id
       t.timestamps
     end
   end

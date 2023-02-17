@@ -33,6 +33,9 @@
     <%= f.submit "新規登録", class: "btn btn-sm btn-success" %>
   </div>
 <% end %>
+<br>
+
+<%= link_to 'ゲストログイン（閲覧用）', sessions_guest_sign_in_path, class: "btn btn-secondary btn-sm ", method: :post %>
 
 <%= render "devise/shared/links" %>
 </div>

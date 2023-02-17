@@ -1,13 +1,15 @@
-<div class ="container">
-<div class="row mb-5">
- <h2><strong>投稿一覧(全<span><%=@movies.count %></span>件)</strong></h2>
+<div class="row">
+<div class= "col-2">
+ <%= render 'sidebar', genres: @genres %>
 </div>
-</div>
+<div class="col-8">
 
-<div class="col-8 mb-4">
-<div class="d-flex flex-wrap">
+<div class="row mx-auto text-center">
+
  <% @movies.each do |movie| %>
-  <div class="movie-box mx-4">
+
+<div class="movie-box mx-4">
+<h2><strong>投稿一覧(全<span><%= @movies.total_count %></span>件中<span><%= @movies.count %></span>件)</strong></h2>
  <%= link_to movie_path(movie.id) do %>
   <p><%= image_tag movie.get_image(100,420) %></p><% end %>
   <p class="movie-name"><%= movie.title %></p>
@@ -16,6 +18,7 @@
       <div class="detail-value", id="star-comf-<%= movie.id %>"></div>
       <div class="eval-star"><%= movie.comfort %>/5点</div>
     </div>
+
       <script>
       $('#star-comf-<%= movie.id %>').empty();
       $('#star-comf-<%= movie.id %>').raty({
@@ -28,6 +31,7 @@
         score: <%= movie.comfort %>,
       });
       </script>
+
     </div>
  <% end %>
  </div>

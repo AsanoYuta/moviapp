@@ -10,6 +10,7 @@
   <p><%= image_tag @user.get_profile_image(200,420) %></p>
   <p>ユーザー名</p>
   <p class="user-name"><%= @user.name %></p>
+ <% if @user.name != "guestuser" %>
  <%- if @user.id == current_user.id %>
   <p>メールアドレス</p>
   <p class = "user-email"><%= @user.email %></p>
@@ -17,6 +18,7 @@
  <%= link_to "編集する", edit_user_path(current_user), class: "btn btn-success" %>
  <%= link_to "退会する", confirm_path, class: "btn btn-danger"  %>
  <% else %>
+ <% end %>
  <% end %>
 </div>
 

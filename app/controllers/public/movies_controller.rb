@@ -2,21 +2,30 @@ class Public::MoviesController < ApplicationController
 
   before_action :ensure_correct_user, only:[:edit]
   def index
-    @movies = Movie.page(params[:page])
+    @genres = Genre.all
+    if params[:genre_id]
+      @movies=Movie.where(genre_id: params[:genre_id]).page(params[:page])
+    else
+      @movies = Movie.page(params[:page])
+    end
   end
 
   def edit
     @movie = Movie.find(params[:id])
     @user = current_user
+    @genres = Genre.all
   end
 
   def new
     @movie = Movie.new
+    @genres = Genre.all
   end
 
   def show
     @movie = Movie.find(params[:id])
     @movie_comment = MovieComment.new
+
+
   end
 
   def create
@@ -48,7 +57,7 @@ class Public::MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :body, :img, :comfort)
+    params.require(:movie).permit(:title, :body, :img, :comfort, :genre_id)
   end
   def ensure_correct_user
     @movie = Movie.find(params[:id])

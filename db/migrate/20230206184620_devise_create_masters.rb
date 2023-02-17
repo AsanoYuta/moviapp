@@ -4,7 +4,7 @@ class DeviseCreateMasters < ActiveRecord::Migration[6.1]
   def change
     create_table :masters do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
+      t.string :email
       t.string :encrypted_password, null: false, default: ""
       t.string :name,               null: false, default: ""
       ## Recoverable

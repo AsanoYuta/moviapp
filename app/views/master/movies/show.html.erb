@@ -4,6 +4,8 @@
 </div>
 </div>
 
+
+
 <div class ="col-8 mb-4">
 
  <%= link_to master_movie_path(@movie.id) do %>
@@ -11,6 +13,7 @@
   <p>　</p>
   <p class = "movie-body"><%= @movie.body %></p>
   <p class="movie-title"><%= @movie.title %></p>
+  <p class="movie-genre"><%= @movie.genre.name %></p>
     <div class="star-group">
       <div class="detail-review">評価</div>
       <div class="detail-value", id="star-comf-<%= @movie.id %>"></div>
