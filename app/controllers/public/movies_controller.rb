@@ -1,6 +1,11 @@
 class Public::MoviesController < ApplicationController
 
   before_action :ensure_correct_user, only:[:edit]
+  
+  require 'themoviedb-api'
+  Tmdb::Api.key("2f65e50b9800d29491f553df62f77f95")
+  Tmdb::Api.language("ja") # こちらで映画情報の表示の際の言語設定を日本語にできます
+  
   def index
     @genres = Genre.all
     if params[:genre_id]
