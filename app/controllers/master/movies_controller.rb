@@ -1,6 +1,10 @@
 class Master::MoviesController < ApplicationController
 before_action :authenticate_master!
 
+  require 'themoviedb-api'
+  Tmdb::Api.key("2f65e50b9800d29491f553df62f77f95")
+  Tmdb::Api.language("ja") 
+
   def index
     @genres = Genre.all
     if params[:genre_id]
