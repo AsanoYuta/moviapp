@@ -10,16 +10,10 @@
     <% movies.each do |movie| %>
       <tr>
         <td><%= link_to(movie.user) do %>
-          <%= image_tag movie.user.get_profile_image, size:'50x50' %>
+          <%= image_tag movie.get_image(50,50) %>
           <% end %>
         </td>
         <td><%= link_to movie.title,movie, class: "movie_#{movie.id}" %></td>
-        <td><%= movie.body %></td>
-        <td class=<%= "movie_" + movie.id.to_s %> >
-            <%= render "master/favorites/favorite-btn", movie: movie %>
-        </td>
-        <td><%= render "master/movie_comments/counter", movie: movie %></td>
-      </tr>
     <% end %>
   </tbody>
 </table>

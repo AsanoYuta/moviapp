@@ -1,13 +1,14 @@
 class Public::MoviesController < ApplicationController
 
   before_action :ensure_correct_user, only:[:edit]
-  
+
   require 'themoviedb-api'
-  Tmdb::Api.key("https://api.themoviedb.org/3/movie/550?api_key=2f65e50b9800d29491f553df62f77f95")
-  Tmdb::Api.language("ja") 
-  
+  Tmdb::Api.key("2f65e50b9800d29491f553df62f77f95")
+  Tmdb::Api.language("ja") # こちらで映画情報の表示の際の言語設定を日本語にできます
+
   def index
     @genres = Genre.all
+    @movie_info = Movie.details(params[:id])
     if params[:genre_id]
       @movies=Movie.where(genre_id: params[:genre_id]).page(params[:page])
     else
@@ -59,6 +60,12 @@ class Public::MoviesController < ApplicationController
       @movie.destroy
     redirect_to root_path
   end
+
+  def search
+    @search_term = params[:looking_for]
+    @movie_results = Movie.search(@search_term)
+  end
+
   private
 
   def movie_params

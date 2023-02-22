@@ -7,6 +7,7 @@ class Movie < ApplicationRecord
 
   has_many :movie_comments, dependent: :destroy
 
+
   has_one_attached :image
 
   def get_image(width, height)

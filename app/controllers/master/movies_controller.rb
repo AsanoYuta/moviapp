@@ -1,9 +1,7 @@
 class Master::MoviesController < ApplicationController
 before_action :authenticate_master!
 
-  require 'themoviedb-api'
-  Tmdb::Api.key("https://api.themoviedb.org/3/movie/550?api_key=2f65e50b9800d29491f553df62f77f95")
-  Tmdb::Api.language("ja")
+  
 
   def index
     @genres = Genre.all
@@ -57,6 +55,9 @@ before_action :authenticate_master!
       @movie.destroy
     redirect_to root_path
   end
+
+
+
   private
 
   def movie_params

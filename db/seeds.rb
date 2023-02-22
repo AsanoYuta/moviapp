@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Master.find_or_create_by!(email: "aaa@aaa.com")do |master|
+master.email = "aaa@aaa.com"
+master.password = "123456"
+end

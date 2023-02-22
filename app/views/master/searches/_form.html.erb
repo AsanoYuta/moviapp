@@ -1,5 +1,5 @@
  <%= form_with url: master_search_path,method: :get, local: true do |f| %>
-   <%= f.text_field :content, size: "40x7" %>
+   <%= f.text_field :, size: "40x7" %>
    <%= f.select :model,options_for_select({"ユーザー"=>"user","映画"=>"movie"})%>
    <%= f.submit'検索', class: "btn btn-primary" %>
  <% end %>
