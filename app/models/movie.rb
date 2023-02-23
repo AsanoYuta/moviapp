@@ -1,12 +1,11 @@
 class Movie < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
 
-  belongs_to :genre
+  belongs_to :genre, optional: true
 
   has_many :favorites, dependent: :destroy
 
   has_many :movie_comments, dependent: :destroy
-
 
   has_one_attached :image
 

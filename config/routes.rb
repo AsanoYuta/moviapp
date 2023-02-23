@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
    resources :users, only: [:show, :index, :edit, :update]
 
-   get '/search/movies', to: 'movies#search'
+   get '/search/genres', to: 'searchs#genre'
 
    patch "user/withdraw" => 'users#withdraw', as: "withdraw"
 

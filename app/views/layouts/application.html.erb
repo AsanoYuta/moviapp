@@ -7,7 +7,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    
+
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -23,13 +23,10 @@
               <% if master_signed_in? %>
               <!--adminログイン状態の際に、表示したいheaderのメニューを記載-->
                <li class="nav-item mr-2">
-                <%= link_to '投稿一覧', master_movies_path, class: "btn btn-outline-light btn-sm btn-block " %>
+                <%= link_to '映画一覧', master_movies_path, class: "btn btn-outline-light btn-sm btn-block " %>
                </li>
                <li class="nav-item mr-2">
                 <%= link_to 'ユーザー一覧', master_users_path, class: "btn btn-outline-light btn-sm btn-block " %>
-               </li>
-               <li class="nav-item mr-2">
-                <%= link_to 'ジャンル一覧', master_genres_path, class: "btn btn-outline-light btn-sm btn-block " %>
                </li>
                <li class="nav-item mr-2">
                 <%= link_to 'ログアウト', destroy_master_session_path, method: :delete, class: "btn btn-outline-light btn-sm btn-block " %>
@@ -39,13 +36,10 @@
               <!--customerログイン状態の際に、表示したいheaderのメニューを記載-->
               <li class="name mt-1 mr-5">ようこそ<span><%= current_user.name %></span>さん！</li>
                <li class="nav-item mr-2">
-                <%= link_to '新規投稿', new_movie_path, class: "btn btn-outline-light btn-sm btn-block " %>
-               </li>
-               <li class="nav-item mr-2">
                 <%= link_to 'マイページ', user_path(current_user), class: "btn btn-outline-light btn-sm btn-block " %>
                </li>
                <li class="nav-item mr-2">
-                <%= link_to '投稿一覧', movies_path, class: "btn btn-outline-light btn-sm btn-block " %>
+                <%= link_to '映画一覧', movies_path, class: "btn btn-outline-light btn-sm btn-block " %>
                </li>
                <li class="nav-item mr-2">
                 <%= link_to 'ユーザー一覧', users_path, class: "btn btn-outline-light btn-sm btn-block " %>
@@ -58,9 +52,6 @@
               <!--adminでもcustomerでもログインしていない時に表示するheaderのメニューを記載-->
                <li class="nav-item mr-2">
                 <%= link_to 'About', about_path, class: "btn btn-outline-light btn-sm btn-block " %>
-               </li>
-               <li class="nav-item mr-2">
-                <%= link_to '投稿一覧', movies_path, class: "btn btn-outline-light btn-sm btn-block " %>
                </li>
                <li class="nav-item mr-2">
                 <%= link_to '新規登録', new_user_registration_path, class: "btn btn-outline-light btn-sm btn-block " %>

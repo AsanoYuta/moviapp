@@ -7,13 +7,8 @@ class Public::MoviesController < ApplicationController
   Tmdb::Api.language("ja") # こちらで映画情報の表示の際の言語設定を日本語にできます
 
   def index
+    @movies = Movie.page(params[:page])
     @genres = Genre.all
-    @movie_info = Movie.details(params[:id])
-    if params[:genre_id]
-      @movies=Movie.where(genre_id: params[:genre_id]).page(params[:page])
-    else
-      @movies = Movie.page(params[:page])
-    end
   end
 
   def edit
@@ -23,12 +18,14 @@ class Public::MoviesController < ApplicationController
   end
 
   def new
+    #byebug
     @movie = Movie.new
     @genres = Genre.all
   end
 
   def show
     @movie = Movie.find(params[:id])
+    #byebug
     @movie_comment = MovieComment.new
 
 
@@ -55,26 +52,9 @@ class Public::MoviesController < ApplicationController
     end
   end
 
-  def destroy
-      @movie = Movie.find(params[:id])
-      @movie.destroy
-    redirect_to root_path
-  end
-
-  def search
-    @search_term = params[:looking_for]
-    @movie_results = Movie.search(@search_term)
-  end
-
-  private
+   private
 
   def movie_params
-    params.require(:movie).permit(:title, :body, :img, :comfort, :genre_id)
-  end
-  def ensure_correct_user
-    @movie = Movie.find(params[:id])
-    unless @movie.user_id == current_user.id
-      redirect_to movie_path
-    end
+    params.require(:movie).permit(:title, :body, :img, :comfort)
   end
 end

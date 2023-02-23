@@ -3,6 +3,7 @@ class CreateMovies < ActiveRecord::Migration[6.1]
     create_table :movies do |t|
       t.string :title, null: false, default: ""
       t.text :body
+      t.string :img_url
       t.float :comfort, null: false, default: 0
       t.integer :user_id
       t.integer :genre_id

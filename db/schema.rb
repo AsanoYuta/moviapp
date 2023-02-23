@@ -68,7 +68,9 @@ ActiveRecord::Schema.define(version: 2023_02_13_193031) do
   end
 
   create_table "movie_comments", force: :cascade do |t|
+    t.string "title", default: "", null: false
     t.text "comment"
+    t.float "comfort", default: 0.0, null: false
     t.integer "user_id"
     t.integer "movie_id"
     t.datetime "created_at", precision: 6, null: false
@@ -77,7 +79,8 @@ ActiveRecord::Schema.define(version: 2023_02_13_193031) do
 
   create_table "movies", force: :cascade do |t|
     t.string "title", default: "", null: false
-    t.text "body", default: "", null: false
+    t.text "body"
+    t.string "img_url"
     t.float "comfort", default: 0.0, null: false
     t.integer "user_id"
     t.integer "genre_id"

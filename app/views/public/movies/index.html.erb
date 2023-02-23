@@ -1,44 +1,30 @@
-<div class="row">
-<div class= "col-2">
- <%= render 'sidebar', genres: @genres %>
+<div class ="container">
+<div class="row mb-5">
+ <h2><strong>映画一覧(全<span><%=@movies.count %></span>件)</strong></h2>
 </div>
-<div class="col-8">
+</div>
 
-<div class="row mx-auto text-center">
-
+<div class="d-flex flex-wrap">
  <% @movies.each do |movie| %>
+<table>
+ <tr>
+ <td>
+ <div class="card-wrapper">
 
-<div class="movie-box mx-4">
-<h2><strong>投稿一覧(全<span><%= @movies.total_count %></span>件中<span><%= @movies.count %></span>件)</strong></h2>
- <%= link_to movie_path(movie.id) do %>
-  <p><%= image_tag movie.get_image(100,420) %></p><% end %>
-  <p class="movie-name"><%= movie.title %></p>
-    <div class="star-group">
-      <div class="detail-review">評価</div>
-      <div class="detail-value", id="star-comf-<%= movie.id %>"></div>
-      <div class="eval-star"><%= movie.comfort %>/5点</div>
-    </div>
-
-      <script>
-      $('#star-comf-<%= movie.id %>').empty();
-      $('#star-comf-<%= movie.id %>').raty({
-        size: 38,
-        starOff:  '<%= asset_path('star-off.png') %>',
-        starOn : '<%= asset_path('star-on.png') %>',
-        starHalf: '<%= asset_path('star-half.png') %>',
-        half: true,
-        readOnly: true,
-        score: <%= movie.comfort %>,
-      });
-      </script>
-
-    </div>
+ <div class="card-upperinfo">
+  <p class="movie-name"><%= link_to movie.title, movie_path(movie.id) %></p>
+  <p>><%= image_tag movie.img_url, size: "200x300" %></p>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+</table>
  <% end %>
- </div>
- </div>
+</div>
+
 
 <div class="row justify-content-center ">
- <%= paginate @movies %>
-</div>
+<%= paginate @movies %>
 </div>
 </div>

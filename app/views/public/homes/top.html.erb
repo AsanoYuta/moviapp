@@ -1,2 +1,14 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class = "row">
+           <div class="bg-img">
+
+                   <p class="lead">ようこそ、moviappへ！<br>このサイトは、映画の評価・感想を投稿するサイトなります。<br>
+                   まずはゲストログインをして投稿された評価を見てみましょう。</p>
+
+           </div>
+</div>
+  <% if user_signed_in? %>
+  <% else %>
+    <h1>新規登録・ゲストログインは<span><%= link_to 'こちら',  new_user_registration_path %></span>から</h1>
+    <h1>ログインは<span><%= link_to 'こちら', new_user_session_path %></span>から</h1>
+  <% end %>
+ </div>

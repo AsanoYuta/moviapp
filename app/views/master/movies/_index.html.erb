@@ -3,19 +3,17 @@
     <tr>
       <th>投稿画像</th>
       <th>タイトル</th>
-
-      <th colspan="2"></th>
+      <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
     <% movies.each do |movie| %>
       <tr>
-        <td><%= link_to master_movie_path(movie.user.id) do %>
-          <%= image_tag movie.get_image(50,50) %>
+        <td><%= link_to(movie.user) do %>
+          <%= image_tag movie.img_url, size: "200x300" %>
           <% end %>
         </td>
-        <td><%= movie.title %></td>
-      </tr>
+        <td><%= link_to movie.title,movie, class: "movie_#{movie.id}" %></td>
     <% end %>
   </tbody>
 </table>

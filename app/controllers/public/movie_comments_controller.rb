@@ -13,6 +13,6 @@ class Public::MovieCommentsController < ApplicationController
 
   private
   def movie_comment_params
-    params.require(:movie_comment).permit(:comment)
+    params.require(:movie_comment).permit(:title, :comment, :comfort)
   end
 end
