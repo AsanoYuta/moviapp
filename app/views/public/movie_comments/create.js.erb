@@ -1,4 +1,5 @@
 $('.comment-textfield').val("")
 $('.comment-textarea').val("")
+$('.star-title').val("0")
 $('.movie-comments-counter').html("<%= j(render 'public/movie_comments/counter', movie: @comment.movie) %>")
 $('.movie-comments-index').html("<%= j(render 'public/movie_comments/index', movie: @comment.movie) %>")

@@ -1,5 +1,5 @@
 <%= form_with(model:[movie, movie_comment], local: false) do |f| %>
-　<%= f.text_field :title, rows:'5',placeholder: "タイトル", class: "form-control" %>
+　<%= f.text_field :title, rows:'5',placeholder: "タイトル", class: "form-control comment-textfield" %>
   <%= f.text_area :comment, rows:'5',placeholder: "本文", class: "w-100 comment-textarea" %>
   <div class="star-form-group" id="star">
   <%= f.label :comfort,'評価', class:'star-title' %>
