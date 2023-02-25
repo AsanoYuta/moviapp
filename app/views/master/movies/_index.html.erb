@@ -9,9 +9,8 @@
   <tbody>
     <% movies.each do |movie| %>
       <tr>
-        <td><%= link_to movie do %>
+        <td>
           <%= image_tag movie.img_url, size: "200x300" %>
-          <% end %>
         </td>
         <td><%= link_to movie.title,master_movie_path(movie.id), class: "movie_#{movie.id}" %></td>
     <% end %>
