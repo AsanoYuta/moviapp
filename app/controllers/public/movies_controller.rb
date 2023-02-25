@@ -7,8 +7,12 @@ class Public::MoviesController < ApplicationController
   Tmdb::Api.language("ja") # こちらで映画情報の表示の際の言語設定を日本語にできます
 
   def index
-    @movies = Movie.page(params[:page])
     @genres = Genre.all
+    if params[:genre_id]
+      @movies = Movie.where(genre_id: params[:genre_id]).page(params[:page]).per(100)
+    else
+      @movies = Movie.page(params[:page]).per(100)
+    end
   end
 
   def edit

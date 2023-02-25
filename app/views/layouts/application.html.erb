@@ -29,6 +29,9 @@
                 <%= link_to 'ユーザー一覧', master_users_path, class: "btn btn-outline-light btn-sm btn-block " %>
                </li>
                <li class="nav-item mr-2">
+                <%= link_to 'ジャンル一覧', master_genres_path, class: "btn btn-outline-light btn-sm btn-block " %>
+               </li>
+               <li class="nav-item mr-2">
                 <%= link_to 'ログアウト', destroy_master_session_path, method: :delete, class: "btn btn-outline-light btn-sm btn-block " %>
                </li>
                <%= render "master/searches/form" %>

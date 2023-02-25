@@ -1,10 +1,13 @@
-<div class ="container">
-<div class="row mb-5">
- <h2><strong>映画一覧(全<span><%=@movies.count %></span>件)</strong></h2>
+<div class = "row">
+
+ <h2><strong>映画一覧(全<%= @movies.total_count %>件中<%= @movies.count %>件)</strong></h2>
+
 </div>
+<div class= "col-2">
+<%= render 'sidebar', genres: @genres %>
 </div>
 
-<div class="d-flex flex-wrap">
+<div class="d-flex flex-wrap col-10">
  <% @movies.each do |movie| %>
 <table>
  <tr>
@@ -23,8 +26,10 @@
  <% end %>
 </div>
 
-
 <div class="row justify-content-center ">
 <%= paginate @movies %>
+</div>
+
+</div>
 </div>
 </div>

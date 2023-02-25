@@ -8,8 +8,12 @@ before_action :authenticate_master!
   Tmdb::Api.language("ja") # こちらで映画情報の表示の際の言語設定を日本語にできます
 
   def index
-    @movies = Movie.page(params[:page])
     @genres = Genre.all
+    if params[:genre_id]
+      @movies = Movie.where(genre_id: params[:genre_id]).page(params[:page]).per(100)
+    else
+      @movies = Movie.page(params[:page]).per(100)
+    end
   end
 
   def edit
@@ -25,6 +29,7 @@ before_action :authenticate_master!
   end
 
   def show
+    @user = current_user
     @movie = Movie.find(params[:id])
     #byebug
     @movie_comment = MovieComment.new
