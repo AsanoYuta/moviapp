@@ -1,3 +1,25 @@
+<%= form_with(model:[movie, movie_comment], local: false) do |f| %>
+　<%= f.text_field :title, rows:'5',placeholder: "タイトル", class: "form-control comment-textfield" %>
+  <%= f.text_area :comment, rows:'5',placeholder: "本文", class: "w-100 comment-textarea" %>
+  <div class="star-form-group mb-3" id="star">
+  <%= f.label :comfort,'評価', class:'star-title' %>
+  </div>
+<script>
+  $('#star').empty();
+  $('#star').raty({
+    size: 36,
+    starOff: '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'movie_comment[comfort]',
+    half: true,
+  });
+</script>
+  <%= f.submit "送信する", class: "btn btn-primary" %>
+<% end %>
+
+レビュー数: <%= movie.movie_comments.count %>
+
 <% movie.movie_comments.each do |movie_comment| %>
 <table>
   <tbody>
@@ -38,3 +60,4 @@
       <% end %>
   </tbody>
 </table>
+

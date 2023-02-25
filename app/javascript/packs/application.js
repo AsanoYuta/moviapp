@@ -11,7 +11,8 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
-import "../stylesheets/application" 
+import "../stylesheets/application"
+
 window.$ = window.jQuery = require('jquery');
 require('packs/raty')
 Rails.start()
