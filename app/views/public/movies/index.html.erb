@@ -1,7 +1,7 @@
 <div class = "container">
 
  <h2><strong>映画一覧(全<%= @total_count %>件中<%= @movies.count %>件)</strong></h2>
-
+</div>
 <div class= "col-2">
 <%= render 'sidebar', genres: @genres %>
 </div>
@@ -29,4 +29,3 @@
 <%= paginate @movies %>
 </div>
 
-</div>
