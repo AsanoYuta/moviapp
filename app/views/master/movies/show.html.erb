@@ -11,9 +11,6 @@
   <p>　</p>
   <h3 class="movie-title"><%= @movie.title %></h3>
   <p class = "movie-body"><%= @movie.body %></p>
-　<div id =<%= "movie_" + @movie.id.to_s %> >
-   <%= render "public/favorites/favorite-btn", movie: @movie %>
-  </div>
 
   <br>
   <%#= render "public/movie_comments/form", movie: @movie, movie_comment: @movie_comment %>
@@ -22,7 +19,7 @@
 
  <div class="movie-comments-index">
 
-  <%= render "public/movie_comments/index", movie: @movie, movie_comment: @movie_comment, user: @user %>
+  <%= render "master/movie_comments/index", movie: @movie, movie_comment: @movie_comment, user: @user %>
  </div>
 
 </div>

@@ -1,7 +1,7 @@
 <table class='table table-hover table-inverse'>
   <thead>
     <tr>
-      <th>投稿画像</th>
+      <th>ポスター画像</th>
       <th>タイトル</th>
       <th colspan="3"></th>
     </tr>
@@ -9,11 +9,11 @@
   <tbody>
     <% movies.each do |movie| %>
       <tr>
-        <td><%= link_to(movie.user) do %>
+        <td><%= link_to movie do %>
           <%= image_tag movie.img_url, size: "200x300" %>
           <% end %>
         </td>
-        <td><%= link_to movie.title,movie, class: "movie_#{movie.id}" %></td>
+        <td><%= link_to movie.title,master_movie_path(movie.id), class: "movie_#{movie.id}" %></td>
     <% end %>
   </tbody>
 </table>

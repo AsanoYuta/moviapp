@@ -15,7 +15,7 @@
  <div class="card-wrapper">
 
  <div class="card-upperinfo">
-  <p class="movie-name"><%= link_to movie.title, movie_path(movie.id) %></p>
+  <p class="movie-name"><%= link_to movie.title, master_movie_path(movie.id) %></p>
   <p>><%= image_tag movie.img_url, size: "200x300" %></p>
  </div>
  </div>

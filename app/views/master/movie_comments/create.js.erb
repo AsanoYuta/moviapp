@@ -1,0 +1,3 @@
+$('.comment-textfield').val("")
+$('.comment-textarea').val("")
+$('.movie-comments-index').html("<%= j(render 'master/movie_comments/index', movie: @comment.movie, movie_comment: @movie_comment) %>")

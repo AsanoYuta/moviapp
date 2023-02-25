@@ -1,0 +1,63 @@
+<%= form_with(model:[movie, movie_comment], local: false) do |f| %>
+　<%= f.text_field :title, rows:'5',placeholder: "タイトル", class: "form-control comment-textfield" %>
+  <%= f.text_area :comment, rows:'5',placeholder: "本文", class: "w-100 comment-textarea" %>
+  <div class="star-form-group mb-3" id="star">
+  <%= f.label :comfort,'評価', class:'star-title' %>
+  </div>
+<script>
+  $('#star').empty();
+  $('#star').raty({
+    size: 36,
+    starOff: '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'movie_comment[comfort]',
+    half: true,
+  });
+</script>
+  <%= f.submit "送信する", class: "btn btn-primary" %>
+<% end %>
+
+レビュー数: <%= movie.movie_comments.count %>
+
+<% movie.movie_comments.each do |movie_comment| %>
+<table>
+  <tbody>
+      <tr>
+        <td>
+          <%= link_to user_path(movie_comment.user) do %>
+            <%= image_tag movie_comment.user.get_profile_image(100,100) %><br>
+            <%= movie_comment.user.name %>
+          <% end %>
+        </td>
+      <td>
+      <%= movie_comment.title %>
+      <div class="star-group">
+        <div class="detail-review">評価</div>
+        <div class="detail-value", id="star-comf-<%= movie_comment.id %>"></div>
+        <div class="eval-star"><%= movie_comment.comfort %>/5点</div>
+      </div>
+      <script>
+        $('#star-comf-<%= movie_comment.id %>').empty();
+        $('#star-comf-<%= movie_comment.id %>').raty({
+          size: 38,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          half: true,
+          readOnly: true,
+          score: <%= movie_comment.comfort %>,
+        });
+      </script>
+      <%= movie_comment.comment %>
+      </td>
+        <td>
+
+            <%= link_to "Destroy", movie_movie_comment_path(movie, movie_comment), method: :delete, class: "btn btn-danger", remote: true %>
+
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+
