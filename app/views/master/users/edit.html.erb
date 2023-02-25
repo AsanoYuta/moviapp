@@ -6,7 +6,7 @@
 
 <div class="col-md-6 offset-md-4">
 <div class="text-center">
-<%= form_with model: @user, method: :patch do |f| %>
+<%= form_with model:[:master, @user], method: :patch do |f| %>
 <table>
  <thead>
   <tr>
