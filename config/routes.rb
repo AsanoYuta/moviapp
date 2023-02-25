@@ -46,7 +46,10 @@ Rails.application.routes.draw do
    get '/search', to: 'searches#search'
    resources :users, only: [:show, :index, :edit, :update, :destroy]
 
-   resources :movies, only: [:show, :index, :edit, :update, :destroy]
+   resources :movies, only: [:show, :index, :edit, :update, :destroy] do
+    resources :movie_comments, only: [:destroy]
+   end
+
 
    resources :genres, only: [:show, :index, :create, :edit, :update, :new, :destroy]
 
