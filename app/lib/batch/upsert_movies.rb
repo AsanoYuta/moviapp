@@ -30,7 +30,7 @@ class Batch::UpsertMovies
           title: movie_hash['table']['title'],
           body: movie_hash['table']['overview'],
           img_url: "https://image.tmdb.org/t/p/w1280#{movie_hash['table']['poster_path']}",
-          genre_id: '3')
+          genre_id: '4')
       end
     end
 
