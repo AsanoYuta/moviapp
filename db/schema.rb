@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2023_02_13_193031) do
   create_table "movies", force: :cascade do |t|
     t.string "title", default: "", null: false
     t.text "body"
-    t.string "genre"
+    t.string "day"
     t.string "img_url"
     t.float "comfort", default: 0.0, null: false
     t.integer "user_id"

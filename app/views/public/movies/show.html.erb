@@ -10,6 +10,7 @@
   <p><%= image_tag @movie.img_url, size: "200x300" %></p><% end %>
   <p>　</p>
   <h3 class="movie-title"><%= @movie.title %></h3>
+  <p>公開日 <%= @movie.day %></p>
   <p class = "movie-body"><%= @movie.body %></p>
 　<div id =<%= "movie_" + @movie.id.to_s %> >
    <%= render "public/favorites/favorite-btn", movie: @movie %>

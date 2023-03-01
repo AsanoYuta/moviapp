@@ -13,6 +13,7 @@ class Batch::UpsertMovies
           title: movie_hash['table']['title'],
           body: movie_hash['table']['overview'],
           img_url: "https://image.tmdb.org/t/p/w1280#{movie_hash['table']['poster_path']}",
+          day: movie_hash['table']['release_date'],
           genre_id: '1')
       end
     end
@@ -30,6 +31,7 @@ class Batch::UpsertMovies
           title: movie_hash['table']['title'],
           body: movie_hash['table']['overview'],
           img_url: "https://image.tmdb.org/t/p/w1280#{movie_hash['table']['poster_path']}",
+          day: movie_hash['table']['release_date'],
           genre_id: '4')
       end
     end
