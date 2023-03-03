@@ -6,9 +6,34 @@
 
            </div>
 </div>
-  <% if user_signed_in? %>
+ <% if user_signed_in? %>
+ <div class="d-flex flex-wrap col-12">
+ <% i = 0 %>
+   <% @movies.each do |movie| %>
+  <% if i == 6 %>
+    <% break %>
+  <% end %>
+    <table>
+     <tr>
+     <td>
+     <div class="card-wrapper">
+     <div class="card-upperinfo">
+      <p class="movie-name"><%= link_to movie.title, movie_path(movie.id) %></p>
+      <p><%= movie.day %></p>
+      <p>><%= image_tag movie.img_url, size: "200x300" %></p>
+     </div>
+     </div>
+     </div>
+     </td>
+     </tr>
+    </table>
+ <% i += 1 %>
+   <% end %>
+  </div>
   <% else %>
     <h1>新規登録・ゲストログインは<span><%= link_to 'こちら',  new_user_registration_path %></span>から</h1>
     <h1>ログインは<span><%= link_to 'こちら', new_user_session_path %></span>から</h1>
   <% end %>
+
+
  </div>
