@@ -9,6 +9,7 @@ class Public::MoviesController < ApplicationController
   def index
     @genres = Genre.all
     @total_count = Movie.all.count
+    @movie_comments = MovieComment.all
     if params[:genre_id]
       @movies = Movie.where(genre_id: params[:genre_id]).page(params[:page]).per(100)
     else

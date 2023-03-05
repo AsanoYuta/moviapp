@@ -3,6 +3,8 @@ class Movie < ApplicationRecord
 
   belongs_to :genre, optional: true
 
+  belongs_to :movie_comments, optional: true
+
   has_many :favorites, dependent: :destroy
 
   has_many :movie_comments, dependent: :destroy

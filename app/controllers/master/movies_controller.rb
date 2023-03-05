@@ -10,6 +10,7 @@ before_action :authenticate_master!
   def index
     @genres = Genre.all
     @total_count = Movie.all.count
+    @movie_comment = MovieComment.new
     if params[:genre_id]
       @movies = Movie.where(genre_id: params[:genre_id]).page(params[:page]).per(100)
     else
