@@ -70,6 +70,7 @@ gem "enum_help"
 gem 'whenever', require: false
 
 gem 'dotenv-rails'
+
 group :production do
   gem 'mysql2'
 end

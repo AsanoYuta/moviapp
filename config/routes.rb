@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
    get '/confirm', to: 'users#confirm'
 
-   resources :movies, only: [:show, :index, :edit, :update, :new, :create, :destroy]do
+   resources :movies, only: [:show, :index, :edit, :update, :create, :destroy]do
 
     resource :favorites, only: [:create, :destroy]
     resources :movie_comments, only: [:create, :destroy]
