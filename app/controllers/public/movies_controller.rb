@@ -1,8 +1,5 @@
 class Public::MoviesController < ApplicationController
-
   before_action :ensure_correct_user, only:[:edit]
-
-
 
   def index
     @genres = Genre.all
