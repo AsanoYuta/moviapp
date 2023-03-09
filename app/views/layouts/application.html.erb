@@ -37,7 +37,7 @@
                <%= render "master/searches/form" %>
               <% elsif user_signed_in? %>
               <!--customerログイン状態の際に、表示したいheaderのメニューを記載-->
-              <li class="name mt-1 mr-5">ようこそ<span><%= current_user.name %></span>さん！</li>
+              <li class="name mt-1 mr-5" style="color:white;">ようこそ<span><%= current_user.name %></span>さん！</li>
                <li class="nav-item mr-2">
                 <%= link_to 'マイページ', user_path(current_user), class: "btn btn-outline-light btn-sm btn-block " %>
                </li>
