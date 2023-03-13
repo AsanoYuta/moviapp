@@ -12,7 +12,7 @@
         <td>
           <%= image_tag movie.img_url, size: "200x300" %>
         </td>
-        <td><%= link_to movie.title,movie, class: "movie_#{movie.id}" %></td>
+        <td><%= link_to movie.title,master_movie_path(movie.id), class: "movie_#{movie.id}" %></td>
     <% end %>
   </tbody>
 </table>
