@@ -38,7 +38,6 @@ Rails.application.routes.draw do
 
    end
 
-   get 'about' => 'homes#about', as: "about"
 
   end
 
