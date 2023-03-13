@@ -12,49 +12,12 @@ before_action :authenticate_master!
     end
   end
 
-  def edit
-    @movie = Movie.find(params[:id])
-    @user = current_user
-    @genres = Genre.all
-  end
-
-  def new
-    #byebug
-    @movie = Movie.new
-    @genres = Genre.all
-  end
-
   def show
     @user = current_user
     @movie = Movie.find(params[:id])
     #byebug
     @movie_comment = MovieComment.new
-
-
   end
-
-  def create
-    @movie = Movie.new(movie_params)
-    @movie.user_id = current_user.id
-    if @movie.save
-      redirect_to root_path
-    else
-      render :new
-    end
-  end
-
-  def update
-    @movie = Movie.find(params[:id])
-    @movie.user_id = current_user.id
-    if @movie.update(movie_params)
-    flash[:notice] = "編集が完了しました。"
-       redirect_to movie_path(@movie.id)
-    else
-       render :edit
-    end
-  end
-
-
 
   private
 

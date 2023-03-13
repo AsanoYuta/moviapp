@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
    get '/confirm', to: 'users#confirm'
 
-   resources :movies, only: [:show, :index, :update, :create, :destroy]do
+   resources :movies, only: [:show, :index, :destroy]do
 
     resource :favorites, only: [:create, :destroy]
     resources :movie_comments, only: [:create, :destroy]
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
    get '/search', to: 'searches#search'
    resources :users, only: [:show, :index, :edit, :update, :destroy]
 
-   resources :movies, only: [:show, :index, :edit, :update, :destroy] do
+   resources :movies, only: [:show, :index, :destroy] do
     resources :movie_comments, only: [:destroy]
    end
 

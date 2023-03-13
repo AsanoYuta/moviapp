@@ -1,13 +1,12 @@
 <div class = "container">
 
  <h2><strong>映画一覧(全<%= @total_count %>件中<%= @movies.count %>件)</strong></h2>
-
 </div>
 <div class= "col-2">
 <%= render 'sidebar', genres: @genres %>
 </div>
 
-<div class="d-flex flex-wrap col-10 col-xs-12">
+<div class="d-flex flex-wrap col-10">
  <% @movies.each do |movie| %>
 <table>
  <tr>
@@ -15,7 +14,7 @@
  <div class="card-wrapper">
 
  <div class="card-upperinfo">
-  <p class="movie-name"><%= link_to movie.title, master_movie_path(movie.id) %></p>
+  <p class="movie-name"><%= link_to movie.title, movie_path(movie.id) %></p>
   <p><%= movie.day %></p>
   <p>評価<%= movie.movie_comments.count %>件</p>
   <p>><%= image_tag movie.img_url, size: "200x300" %></p>
@@ -32,4 +31,3 @@
 <%= paginate @movies %>
 </div>
 
-</div>

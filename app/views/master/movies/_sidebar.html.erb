@@ -6,12 +6,12 @@
   </thead>
   <tbody>
       <tr>
-        <td class="text-center"><%= link_to "全投稿を表示", master_movies_path %></td>
+        <td class="text-center"><%= link_to "全映画を表示", movies_path %></td>
       </tr>
     <% genres.each do |genre| %>
       <tr>
         <td class="align-middle text-center">
-          <%= link_to master_movies_path(genre_id: genre.id) do %>
+          <%= link_to movies_path(genre_id: genre.id) do %>
             <%= genre.name %>
           <% end %>
         </td>
