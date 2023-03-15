@@ -2,8 +2,8 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:edit]
   before_action :ensure_correct_user, only:[:edit]
-  def new
-  end
+
+
   def index
     @users = User.all
   end
@@ -28,8 +28,10 @@ class Public::UsersController < ApplicationController
     render :edit
     end
   end
+
   def confirm
   end
+
   def withdraw
     @user = current_user
     @user.update(is_deleted: true)
@@ -37,6 +39,7 @@ class Public::UsersController < ApplicationController
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
   end
+
   private
 
   def user_params
