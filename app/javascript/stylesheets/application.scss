@@ -49,11 +49,13 @@
 
 #back {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  right: 50px;
+  bottom: 50px;
 }
 
 .arrow{
+  background-image: url("../../assets/images/arrow.png");
+  background-size: cover;
   width:      50px;
   height:     50px;
 }
