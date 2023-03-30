@@ -4,6 +4,4 @@ class Public::HomesController < ApplicationController
     @movies = Movie.page(params[:page]).per(100)
   end
 
-  def about
-  end
 end

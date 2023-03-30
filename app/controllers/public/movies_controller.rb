@@ -22,4 +22,5 @@ class Public::MoviesController < ApplicationController
   def movie_params
     params.require(:movie).permit(:title, :body, :img, :comfort)
   end
+
 end

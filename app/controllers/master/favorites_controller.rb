@@ -4,4 +4,5 @@ class Master::FavoritesController < ApplicationController
 
   def destroy
   end
+
 end

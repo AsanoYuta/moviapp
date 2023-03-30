@@ -1,5 +1,6 @@
 class Master::GenresController < ApplicationController
 before_action :authenticate_master!
+
   def index
     @genres = Genre.all
     @genre = Genre.new
@@ -32,6 +33,7 @@ before_action :authenticate_master!
       @genre.destroy
     redirect_to master_genres_path
   end
+
   private
 
   def genre_params
